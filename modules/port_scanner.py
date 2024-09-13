@@ -25,9 +25,10 @@ services = {
     27017: "mongodb"
 }
 
+# Regex patterns to extract service versions from banners
 version_patterns = {
     "ftp": r"FTP\/(\d+\.\d+)",
-    "ssh": r"SSH-(\d+\.\d+)",
+    "ssh": r"SSH-(\d+\.\d+)",  # SSH version detection pattern
     "telnet": r"Telnet\/(\d+\.\d+)",
     "smtp": r"ESMTP|SMTP\/(\d+\.\d+)",
     "http": r"HTTP\/(\d+\.\d+)",
@@ -45,7 +46,7 @@ def service_version(port, banner=None):
             match = re.search(version_patterns[service], banner)
             if match:
                 version = match.group(1)
-        # Default to version extraction if service pattern not found
+        # Fallback to extract a generic version format if no specific pattern found
         if version == "unknown":
             general_version_match = re.search(r"(\d+\.\d+\.\d+)", banner)
             if general_version_match:
@@ -60,7 +61,7 @@ def scan_tcp_port(target, port):
         result = sock.connect_ex((target, port))
         if result == 0:
             try:
-                sock.send(b'HEAD / HTTP/1.1\r\n\r\n')
+                sock.send(b'HEAD / HTTP/1.1\r\n\r\n')  # For HTTP services
                 banner = sock.recv(1024).decode().strip()
                 service_info = service_version(port, banner)
             except Exception:
@@ -140,7 +141,7 @@ if __name__ == "__main__":
     parser_scan.add_argument("--protocol", choices=['tcp', 'udp'], default='tcp', help="Protocol to scan (default: tcp)")
 
     # OS Detection Module
-    parser_os = subparsers.add_parser("osdetect", help="Perform OS detection on a target")
+    parser_os = subparsers.add_parser("-os", help="Perform OS detection on a target")
     parser_os.add_argument("target", help="Target IP address or hostname")
 
     args = parser.parse_args()
@@ -154,7 +155,7 @@ if __name__ == "__main__":
             print(f"Error resolving IP for {args.target}: {e}")
             print("Invalid target or IP resolution failed.")
     
-    elif args.command == "osdetect":
+    elif args.command == "-os":
         try:
             target_ip = socket.gethostbyname(args.target)  # Convert hostname to IP
             nmap_scan(target_ip)  # Perform OS detection
