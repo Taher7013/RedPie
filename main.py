@@ -1,13 +1,15 @@
 import argparse
 import nmap3
-from modules import port_scanner, web_fuzzer, password_cracker, enum4Linux
+from modules import port_scanner, web_fuzzer, password_cracker, enum4Linux, client, server, zipcracker, bypass302
 
 def print_banner():
     banner = r"""
-   / __ \/ ____/ __ \/ __ \\(_)__ 
-  / /_/ / __/ / / / / /_/ / / _ \\
- / _, _/ /___/ /_/ / ____/ /  __/
-/_/ |_/_____/_____/__/   /_/\\___/ 
+     ____  __________  ____  _ ______
+   / __ \/ ____/ __ \/ __ \(_) ____/
+  / /_/ / __/ / / / / /_/ / / __/   
+ / _, _/ /___/ /_/ / ____/ / /___   
+/_/ |_/_____/_____/_/   /_/_____/   
+                                    
     """
     print(banner)
     print("Welcome to the Python Multi-Tool suite!")
@@ -23,9 +25,10 @@ def main():
     # Port Scanner Module
     parser_scan = subparsers.add_parser("portscan", help="Scan open ports on a target")
     parser_scan.add_argument("target", help="Target IP address or hostname")
+    parser_scan.add_argument("-os", action="store_true", help="Perform OS detection")
     parser_scan.add_argument("--start-port", type=int, default=1, help="Starting port")
     parser_scan.add_argument("--end-port", type=int, default=65535, help="Ending port")
-
+    
     # Web Fuzzer Module
     parser_fuzz = subparsers.add_parser("webfuzz", help="Fuzz for hidden web directories")
     parser_fuzz.add_argument("url", help="Target URL to fuzz (e.g., http://example.com)")
@@ -45,6 +48,18 @@ def main():
 
     if args.command == "portscan":
         port_scanner.scan_ports(args.target, args.start_port, args.end_port)
+        if args.os:
+            nmap = nmap3.Nmap()
+            print("Performing OS detection...")
+            os_result = nmap.nmap_os_detection(args.target)
+            if os_result:
+                for os_entry in os_result:
+                    os_class = os_entry.get('osclass', 'Unknown')
+                    os_name = os_entry.get('osfamily', 'Unknown')
+                    os_version = os_entry.get('osversion', 'Unknown')
+                    print(f"OS Details: Class: {os_class}, Name: {os_name}, Version: {os_version}")
+            else:
+                print("No OS details found.")
     elif args.command == "webfuzz":
         web_fuzzer.fuzz_directories(args.url, args.wordlist, verbose=args.verbose, filter_status=args.filter_status, headers=args.headers, timeout=args.timeout, threads=args.threads)
     elif args.command == "crack":
