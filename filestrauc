@@ -1,0 +1,12 @@
+multi_tool/
+│
+├── multi_tool.py         # Main entry script
+├── modules/
+│   ├── port_scanner.py   # Module for port scanning
+│   ├── web_fuzzer.py     # Module for directory fuzzing
+│   ├── password_cracker.py  # Module for password cracking
+│   └── __init__.py       # Makes it a package
+├── utils/
+│   ├── common.py         # Common utility functions
+│   └── __init__.py
+└── requirements.txt      # External dependencies (if any)
