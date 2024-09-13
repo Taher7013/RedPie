@@ -1,2 +1,3 @@
 argparse
 psutil
+python3-nmap
