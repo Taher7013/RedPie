@@ -1,5 +1,6 @@
 ![RedTeam Pentesting Tool Kit](https://github.com/user-attachments/assets/373f1bec-558d-45dd-b72f-dac5f3851b77)
-![Screenshot_1](https://github.com/user-attachments/assets/012afb1e-1311-4888-bd94-ae54fc1970e8)
+![Screenshot_3](https://github.com/user-attachments/assets/464e99f0-724d-4bdd-9935-3d7c753807c2)
+
 
 # RedPie: Red Team Pentesting Toolkit
 
