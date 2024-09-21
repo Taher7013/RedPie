@@ -1,3 +1,7 @@
-argparse
-psutil
-python3-nmap
+psutil==6.0.0
+python3-nmap==1.9.1
+playwright==1.47.0
+Pillow==10.4.0
+matplotlib==3.9.2
+pyftpdlib
+python3-nmap==1.9.1
