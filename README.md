@@ -1,5 +1,3 @@
-[![Documentation](https://img.shields.io/badge/GitBook-Documentation-purple)](https://tahers-organization.gitbook.io/redpie-docs/)
-
 ![RedTeam Pentesting Tool Kit](https://github.com/user-attachments/assets/373f1bec-558d-45dd-b72f-dac5f3851b77)
 ![Screenshot_3](https://github.com/user-attachments/assets/464e99f0-724d-4bdd-9935-3d7c753807c2)
 
@@ -15,6 +13,13 @@
 - **Password Cracking**: Efficiently crack hashed passwords with customizable wordlists.
 - **OS Detection**: Identify operating systems using advanced techniques and integrations.
 - **Modular Design**: Easily extend and integrate with other tools and scripts.
+
+## RedPie Documentation (Soon)
+
+The full documentation for **RedPie** is available to guide you through installation, usage, features, and best practices. Whether you're just getting started or looking to dive deep into advanced features, the documentation has you covered.
+
+### [![Documentation](https://img.shields.io/badge/GitBook-Documentation-purple)](https://tahers-organization.gitbook.io/redpie-docs/)
+
 
 ## Contributing Guidelines
 
