@@ -18,7 +18,7 @@
 
 The full documentation for **RedPie** is available to guide you through installation, usage, features, and best practices. Whether you're just getting started or looking to dive deep into advanced features, the documentation has you covered.
 
-### [![GitBook](https://img.shields.io/badge/GitBook-RedPie-blue?style=flat&logo=gitbook)](https://app.gitbook.com/o/C4nDdNultvj0y58nN7eE/s/0lEZOdxQrCzpvNpMAWcU/)
+### [![GitBook](https://img.shields.io/badge/GitBook-RedPie-purple?style=flat&logo=gitbook)](https://app.gitbook.com/o/C4nDdNultvj0y58nN7eE/s/0lEZOdxQrCzpvNpMAWcU/)
 
 
 ## Contributing Guidelines
